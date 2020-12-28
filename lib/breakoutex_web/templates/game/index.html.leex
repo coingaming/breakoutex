@@ -1,7 +1,7 @@
 <div phx-window-keydown="keydown" phx-window-keyup="keyup">
     <div class="column left">
         &#8203;
-        <%= if !@game_state in [:welcome, :name] do %>
+        <%= if @game_state not in [:welcome, :name] do %>
             <div class="online-container">
                 <%= live_component @socket, ActiveUsers, current_user_id: @current_user_id, users: @users %>
             </div>
@@ -118,7 +118,11 @@
         <% end %>
     </div>
     <div class="column right">
-
+        <%= if @game_state not in [:welcome, :name] do %>
+        <div class="leaderboard-container">
+            <%= live_component @socket, Leaderboard, current_user_id: @current_user_id, leaderboard: @leaderboard %>
+        </div>
+        <% end %>
     </div>
 
 </div>

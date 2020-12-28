@@ -61,7 +61,7 @@ defmodule BreakoutexWeb do
 
       import Phoenix.LiveView
       import Phoenix.LiveView.Helpers
-      alias BreakoutexWeb.Components.ActiveUsers
+      alias BreakoutexWeb.Components.{ActiveUsers, Leaderboard}
     end
   end
 
