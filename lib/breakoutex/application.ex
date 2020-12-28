@@ -7,7 +7,8 @@ defmodule Breakoutex.Application do
     children = [
       BreakoutexWeb.Endpoint,
       {Breakoutex.PersistentLeaderboard, :leaderboard},
-      {Phoenix.PubSub, [name: Breakoutex.PubSub, adapter: Phoenix.PubSub.PG2]}
+      {Phoenix.PubSub, [name: Breakoutex.PubSub, adapter: Phoenix.PubSub.PG2]},
+      BreakoutexWeb.Presence
     ]
 
     opts = [strategy: :one_for_one, name: Breakoutex.Supervisor]

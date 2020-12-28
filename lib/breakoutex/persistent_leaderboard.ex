@@ -26,6 +26,7 @@ defmodule Breakoutex.PersistentLeaderboard do
     {:ok, %{table: table}}
   end
 
+  @spec save(%{level: any, player_name: any, score: any}) :: true
   def save(%{player_name: player_name, score: score, level: level}) do
     saved_info = {player_name, [score: score, time: NaiveDateTime.utc_now, level: level]}
     # Logger.info(inspect(saved_info))

@@ -41,6 +41,18 @@
   left: calc(50% - 260px);
 }
 
+.online-container .me {
+  text-decoration: underline;
+}
+
+.online-container {
+  font-size:  x-small;
+}
+
+.online-container {
+  padding: 1.5rem;
+}
+
 .info-container {
   padding-bottom: 1.5rem;
 }
@@ -125,5 +137,32 @@
   to {
     visibility: hidden;
   }
+}
+
+.column {
+  float: left;
+}
+
+div.left:empty:before {
+  content: "\200b"; /* unicode zero width space character */
+}
+
+.left, .right {
+  width: 25%;
+  min-width: 25%;
+}
+
+.middle {
+  width: 50%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+}
+
+.grid-header {
+  padding-bottom: 10px;
+  font-weight: bold;
 }
 
