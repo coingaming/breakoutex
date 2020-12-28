@@ -9,6 +9,7 @@ defmodule BreakoutexWeb.Live.Game do
 
   alias Phoenix.LiveView.Socket
   alias BreakoutexWeb.Live.{Blocks, Engine}
+  alias Breakoutex.PersistentLeaderboard
 
   @type intersection_point :: %{
           block: paddle() | brick(),
@@ -124,8 +125,18 @@ defmodule BreakoutexWeb.Live.Game do
   # Compute the closest point of intersection, if any, between the ball and obstacles (bricks and paddle)
   @spec check_collision(Socket.t()) :: Socket.t()
   defp check_collision(
-         %{assigns: %{bricks: bricks, ball: ball, paddle: paddle, unit: unit, score: score, multiplier: multiplier}} =
-           socket
+         %{
+           assigns: %{
+             bricks: bricks,
+             ball: ball,
+             paddle: paddle,
+             unit: unit,
+             score: score,
+             multiplier: multiplier,
+             player_name: player_name,
+             level: level
+           }
+         } = socket
        ) do
     [paddle | bricks]
     |> Enum.filter(& &1.visible)
@@ -165,6 +176,8 @@ defmodule BreakoutexWeb.Live.Game do
         new_bricks = hide_brick(bricks, block.id)
         hit_bricks = count_hidden_bricks(new_bricks) - count_hidden_bricks(bricks)
         %{multiplier: new_multiplier, score: new_score} = handle_hit_bricks(hit_bricks, score, multiplier)
+
+        PersistentLeaderboard.save(%{player_name: player_name, score: new_score, level: level})
 
         socket
         |> assign(:bricks, new_bricks)
@@ -241,6 +254,9 @@ defmodule BreakoutexWeb.Live.Game do
     score + @points_for_brick * multiplier
   end
 
+  @spec deduct_from_score(Integer.t()) :: Integer.t()
+  defp deduct_from_score(score), do: score - @points_subtracted_on_lost_life
+
   @spec collision_direction_x(number(), Engine.direction()) :: number()
   defp collision_direction_x(dx, direction) when direction in [:left, :right], do: -dx
   defp collision_direction_x(dx, _), do: dx
@@ -256,14 +272,27 @@ defmodule BreakoutexWeb.Live.Game do
   end
 
   @spec check_lost(Socket.t()) :: Socket.t()
-  defp check_lost(%{assigns: %{ball: ball, unit: unit, lost_lives: lost_lives, score: score}} = socket) do
+  defp check_lost(
+         %{
+           assigns: %{
+             ball: ball,
+             unit: unit,
+             lost_lives: lost_lives,
+             score: score,
+             player_name: player_name,
+             level: level
+           }
+         } = socket
+       ) do
     if ball.y + ball.dy + ball.radius >= @board_rows * unit do
+      PersistentLeaderboard.save(%{player_name: player_name, score: deduct_from_score(score), level: level})
+
       socket
       |> assign(:game_state, :wait)
       |> assign(:paddle, initial_paddle_state())
       |> assign(:ball, initial_ball_state())
       |> assign(:lost_lives, lost_lives + 1)
-      |> assign(:score, score - @points_subtracted_on_lost_life)
+      |> assign(:score, deduct_from_score(score))
       |> assign(:multiplier, @starting_multiplier)
     else
       socket
