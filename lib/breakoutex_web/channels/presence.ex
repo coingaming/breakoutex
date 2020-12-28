@@ -9,4 +9,3 @@ defmodule BreakoutexWeb.Presence do
     otp_app: :breakoutex,
     pubsub_server: Breakoutex.PubSub
 end
-

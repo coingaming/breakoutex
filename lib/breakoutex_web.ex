@@ -31,6 +31,7 @@ defmodule BreakoutexWeb do
     quote do
       use Phoenix.LiveView,
         layout: {MissionControlWeb.LayoutView, "live.html"}
+
       unquote(view_helpers())
     end
   end

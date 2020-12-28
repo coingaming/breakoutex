@@ -29,17 +29,19 @@ defmodule BreakoutexWeb.Live.Game do
     current_user_id = Map.get(socket.assigns, :current_user_id, "user_" <> Integer.to_string(System.os_time(:second)))
 
     if connected?(socket) do
-      {:ok, _} = Presence.track(self(), @presence, current_user_id , %{
-        name: "No name yet",
-        joined_at: :os.system_time(:seconds),
-        level: 1,
-        points: 0
-      })
+      {:ok, _} =
+        Presence.track(self(), @presence, current_user_id, %{
+          name: "No name yet",
+          joined_at: :os.system_time(:seconds),
+          level: 1,
+          points: 0
+        })
 
       Phoenix.PubSub.subscribe(PubSub, @presence)
     end
 
     state = initial_state()
+
     socket =
       socket
       |> assign(state)
@@ -389,19 +391,23 @@ defmodule BreakoutexWeb.Live.Game do
 
   defp on_stop_input(socket, _), do: socket
 
-  defp update_player_name(%{assigns: %{users: users, current_user_id: current_user_id, player_name: player_name}} = socket) do
+  defp update_player_name(
+         %{assigns: %{users: users, current_user_id: current_user_id, player_name: player_name}} = socket
+       ) do
     Presence.update(self(), @presence, current_user_id, Map.put(users[current_user_id], :name, player_name))
     socket
   end
 
   defp update_player_level(%{assigns: %{users: users, current_user_id: current_user_id}} = socket, new_level) do
     Presence.update(self(), @presence, current_user_id, Map.put(users[current_user_id], :level, new_level))
+
     socket
     |> assign(:level, new_level + 1)
   end
 
   defp update_player_points(%{assigns: %{users: users, current_user_id: current_user_id}} = socket, new_points) do
     Presence.update(self(), @presence, current_user_id, Map.put(users[current_user_id], :points, new_points))
+
     socket
     |> assign(:score, new_points)
   end
@@ -450,7 +456,7 @@ defmodule BreakoutexWeb.Live.Game do
     do: @starting_angles |> Enum.random() |> :math.cos() |> Kernel.*(@ball_speed)
 
   defp handle_joins(socket, joins) do
-    Enum.reduce(joins, socket, fn {user, %{metas: [meta| _]}}, socket ->
+    Enum.reduce(joins, socket, fn {user, %{metas: [meta | _]}}, socket ->
       assign(socket, :users, Map.put(socket.assigns.users, user, meta))
     end)
   end

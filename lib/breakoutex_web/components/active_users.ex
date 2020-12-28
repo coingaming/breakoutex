@@ -1,5 +1,6 @@
 defmodule BreakoutexWeb.Components.ActiveUsers do
   use BreakoutexWeb, :live_component
+
   @moduledoc """
     A small LiveView that shows the active players of the game
   """
@@ -23,8 +24,7 @@ defmodule BreakoutexWeb.Components.ActiveUsers do
 
   def update(assigns, socket) do
     {:ok,
-      socket
-      |> assign(assigns)
-    }
+     socket
+     |> assign(assigns)}
   end
 end
