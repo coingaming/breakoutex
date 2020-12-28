@@ -26,7 +26,7 @@ defmodule BreakoutexWeb.Components.Leaderboard do
         </div>
         <%= for {user_id, user} <- @leaderboard do %>
           <div class="grid-item">
-            1.
+            <%= user[:position] + 1 %>.
           </div>
           <div class="grid-item">
             <%= if user_id == @current_user_id do %>
