@@ -399,10 +399,9 @@ defmodule BreakoutexWeb.Live.Game do
   end
 
   defp update_player_level(%{assigns: %{users: users, current_user_id: current_user_id}} = socket, new_level) do
-    Presence.update(self(), @presence, current_user_id, Map.put(users[current_user_id], :level, new_level))
-
+    Presence.update(self(), @presence, current_user_id, Map.put(users[current_user_id], :level, new_level + 1))
     socket
-    |> assign(:level, new_level + 1)
+    |> assign(:level, new_level)
   end
 
   defp update_player_points(%{assigns: %{users: users, current_user_id: current_user_id}} = socket, new_points) do
