@@ -65,9 +65,16 @@ defmodule BreakoutexWeb.Live.Game do
     |> check_collision()
     |> check_lost()
     |> check_victory()
+    |> update_leaderboard()
   end
 
   defp game_loop(socket), do: socket
+
+  @spec update_leaderboard(Socket.t()) :: Socket.t()
+  defp update_leaderboard(socket) do
+    socket
+    |> assign(:leaderboard, PersistentLeaderboard.get_leaderboard())
+  end
 
   @spec schedule_tick(Socket.t()) :: Socket.t()
   defp schedule_tick(socket) do

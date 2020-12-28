@@ -27,7 +27,13 @@ defmodule Breakoutex.PersistentLeaderboard do
   end
 
   def save(%{player_name: player_name, score: score, level: level}) do
-    Logger.info("saving #{score} for #{player_name}, time: #{NaiveDateTime.utc_now}, level: #{level}")
-    :ets.insert(:leaderboard, [player_name: player_name, score: score, time: NaiveDateTime.utc_now, level: level])
+    saved_info = {player_name, [score: score, time: NaiveDateTime.utc_now, level: level]}
+    # Logger.info(inspect(saved_info))
+    :ets.insert(@default_db_name, saved_info)
+  end
+
+  def get_leaderboard() do
+    [:ets.tab2list(@default_db_name)]
+    # |> IO.inspect()
   end
 end
