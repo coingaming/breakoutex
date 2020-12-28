@@ -33,7 +33,7 @@ defmodule Breakoutex.PersistentLeaderboard do
   end
 
   def get_leaderboard() do
-    [:ets.tab2list(@default_db_name)]
+    :ets.tab2list(@default_db_name)
     # |> IO.inspect()
   end
 end
