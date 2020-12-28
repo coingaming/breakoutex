@@ -3,6 +3,7 @@ defmodule Breakoutex.PersistentLeaderboard do
   require Logger
 
   @default_db_name :leaderboard
+  @leaderboard_size 50
 
   def start_link(table_name) do
     GenServer.start_link(__MODULE__, table_name, name: @default_db_name)
@@ -35,6 +36,7 @@ defmodule Breakoutex.PersistentLeaderboard do
   def get_leaderboard() do
     :ets.tab2list(@default_db_name)
     |> Enum.sort_by(fn({_, [score: score, time: _, level: _, player_name: _]}) -> -score end)
+    |> Enum.slice(0..@leaderboard_size)
     |> IO.inspect()
   end
 end
