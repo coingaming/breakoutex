@@ -6,6 +6,7 @@ defmodule Breakoutex.Application do
   def start(_type, _args) do
     children = [
       BreakoutexWeb.Endpoint,
+      {Breakoutex.PersistentLeaderboard, :leaderboard},
       {Phoenix.PubSub, [name: Breakoutex.PubSub, adapter: Phoenix.PubSub.PG2]},
       BreakoutexWeb.Presence
     ]

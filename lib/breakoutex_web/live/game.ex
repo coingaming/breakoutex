@@ -9,6 +9,7 @@ defmodule BreakoutexWeb.Live.Game do
 
   alias Phoenix.LiveView.Socket
   alias BreakoutexWeb.Live.{Blocks, Engine}
+  alias Breakoutex.PersistentLeaderboard
   alias BreakoutexWeb.Presence
   alias Breakoutex.PubSub
 
@@ -94,9 +95,16 @@ defmodule BreakoutexWeb.Live.Game do
     |> check_collision()
     |> check_lost()
     |> check_victory()
+    |> update_leaderboard()
   end
 
   defp game_loop(socket), do: socket
+
+  @spec update_leaderboard(Socket.t()) :: Socket.t()
+  defp update_leaderboard(socket) do
+    socket
+    |> assign(:leaderboard, PersistentLeaderboard.get_leaderboard())
+  end
 
   @spec schedule_tick(Socket.t()) :: Socket.t()
   defp schedule_tick(socket) do
@@ -154,8 +162,16 @@ defmodule BreakoutexWeb.Live.Game do
   # Compute the closest point of intersection, if any, between the ball and obstacles (bricks and paddle)
   @spec check_collision(Socket.t()) :: Socket.t()
   defp check_collision(
-         %{assigns: %{bricks: bricks, ball: ball, paddle: paddle, unit: unit, score: score, multiplier: multiplier}} =
-           socket
+         %{
+           assigns: %{
+             bricks: bricks,
+             ball: ball,
+             paddle: paddle,
+             unit: unit,
+             score: score,
+             multiplier: multiplier
+           }
+         } = socket
        ) do
     [paddle | bricks]
     |> Enum.filter(& &1.visible)
@@ -271,6 +287,9 @@ defmodule BreakoutexWeb.Live.Game do
     score + @points_for_brick * multiplier
   end
 
+  @spec deduct_from_score(Integer.t()) :: Integer.t()
+  defp deduct_from_score(score), do: score - @points_subtracted_on_lost_life
+
   @spec collision_direction_x(number(), Engine.direction()) :: number()
   defp collision_direction_x(dx, direction) when direction in [:left, :right], do: -dx
   defp collision_direction_x(dx, _), do: dx
@@ -286,14 +305,23 @@ defmodule BreakoutexWeb.Live.Game do
   end
 
   @spec check_lost(Socket.t()) :: Socket.t()
-  defp check_lost(%{assigns: %{ball: ball, unit: unit, lost_lives: lost_lives, score: score}} = socket) do
+  defp check_lost(
+         %{
+           assigns: %{
+             ball: ball,
+             unit: unit,
+             lost_lives: lost_lives,
+             score: score
+           }
+         } = socket
+       ) do
     if ball.y + ball.dy + ball.radius >= @board_rows * unit do
       socket
       |> assign(:game_state, :wait)
       |> assign(:paddle, initial_paddle_state())
       |> assign(:ball, initial_ball_state())
       |> assign(:lost_lives, lost_lives + 1)
-      |> update_player_points(score - @points_subtracted_on_lost_life)
+      |> update_player_points(deduct_from_score(score))
       |> assign(:multiplier, @starting_multiplier)
     else
       socket
@@ -404,8 +432,10 @@ defmodule BreakoutexWeb.Live.Game do
     |> assign(:level, new_level)
   end
 
-  defp update_player_points(%{assigns: %{users: users, current_user_id: current_user_id}} = socket, new_points) do
+  defp update_player_points(%{assigns: %{users: users, current_user_id: current_user_id, player_name: player_name, level: level}} = socket, new_points) do
     Presence.update(self(), @presence, current_user_id, Map.put(users[current_user_id], :points, new_points))
+
+    PersistentLeaderboard.save(%{player_name: player_name, score: new_points, level: level})
 
     socket
     |> assign(:score, new_points)
