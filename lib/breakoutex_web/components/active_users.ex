@@ -8,17 +8,32 @@ defmodule BreakoutexWeb.Components.ActiveUsers do
   def render(assigns) do
     ~L"""
       <h6>Users online:</h6>
-      <%= for {user_id, user} <- @users do %>
-        <%= if user_id == @current_user_id do %>
-          <span class="me"><%= user[:name] %></span>
-        <% else %>
-          <%= user[:name] %>
+      <div class="grid-container">
+        <div class="grid-item grid-header">
+          Name
+        </div>
+        <div class="grid-item grid-header">
+          Level
+        </div>
+        <div class="grid-item grid-header">
+          Points
+        </div>
+        <%= for {user_id, user} <- @users do %>
+          <div class="grid-item">
+            <%= if user_id == @current_user_id do %>
+              <span class="me"><%= user[:name] %></span>
+            <% else %>
+              <%= user[:name] %>
+            <% end %>
+          </div>
+          <div class="grid-item">
+          <%= user[:level] %>
+          </div>
+          <div class="grid-item">
+            <%= user[:points] %>
+          </div>
         <% end %>
-        (<%= DateTime.from_unix!(user[:joined_at]) %>)
-        Lvl: <%= user[:level] %>
-        Points: <%= user[:points] %>
-        <br />
-      <% end %>
+      </div>
     """
   end
 

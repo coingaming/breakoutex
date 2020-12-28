@@ -34,8 +34,7 @@
 
 .info-container,
 .game-container,
-.score-container,
-.online-container
+.score-container
 {
   position: relative;
   /* Subtract half of the board width*/
@@ -51,7 +50,7 @@
 }
 
 .online-container {
-  padding-top: 1.5rem;
+  padding: 1.5rem;
 }
 
 .info-container {
@@ -138,5 +137,32 @@
   to {
     visibility: hidden;
   }
+}
+
+.column {
+  float: left;
+}
+
+div.left:empty:before {
+  content: "\200b"; /* unicode zero width space character */
+}
+
+.left, .right {
+  width: 25%;
+  min-width: 25%;
+}
+
+.middle {
+  width: 50%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 3fr 1fr 1fr;
+}
+
+.grid-header {
+  padding-bottom: 10px;
+  font-weight: bold;
 }
 
