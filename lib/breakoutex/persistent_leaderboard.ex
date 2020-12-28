@@ -28,15 +28,17 @@ defmodule Breakoutex.PersistentLeaderboard do
   end
 
   def save(%{player_name: player_name, score: score, level: level, current_user_id: current_user_id}) do
-    saved_info = {current_user_id, [score: score, time: NaiveDateTime.utc_now, level: level, player_name: player_name]}
+    saved_info =
+      {current_user_id, [score: score, time: NaiveDateTime.utc_now(), level: level, player_name: player_name]}
+
     # Logger.info(inspect(saved_info))
     :ets.insert(@default_db_name, saved_info)
   end
 
   def get_leaderboard() do
     :ets.tab2list(@default_db_name)
-    |> Enum.sort_by(fn({_, [score: score, time: _, level: _, player_name: _]}) -> -score end)
-    |> Enum.slice(0..@leaderboard_size)
+    |> Enum.sort_by(fn {_, [score: score, time: _, level: _, player_name: _]} -> -score end)
+    |> Enum.slice(0..(@leaderboard_size - 1))
     |> IO.inspect()
   end
 end

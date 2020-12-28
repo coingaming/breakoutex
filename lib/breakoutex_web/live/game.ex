@@ -27,7 +27,8 @@ defmodule BreakoutexWeb.Live.Game do
 
   @spec mount(map() | :not_mounted_at_router, map(), Socket.t()) :: {:ok, Socket.t()}
   def mount(_params, _session, socket) do
-    current_user_id = Map.get(socket.assigns, :current_user_id, "user_" <> Integer.to_string(System.os_time(:millisecond)))
+    current_user_id =
+      Map.get(socket.assigns, :current_user_id, "user_" <> Integer.to_string(System.os_time(:millisecond)))
 
     if connected?(socket) do
       {:ok, _} =
@@ -447,7 +448,12 @@ defmodule BreakoutexWeb.Live.Game do
        ) do
     Presence.update(self(), @presence, current_user_id, Map.put(users[current_user_id], :points, new_points))
 
-    PersistentLeaderboard.save(%{player_name: player_name, score: new_points, level: level, current_user_id: current_user_id})
+    PersistentLeaderboard.save(%{
+      player_name: player_name,
+      score: new_points,
+      level: level,
+      current_user_id: current_user_id
+    })
 
     socket
     |> assign(:score, new_points)
