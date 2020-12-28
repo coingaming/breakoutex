@@ -13,7 +13,7 @@ defmodule BreakoutexWeb.Components.ActiveUsers do
           Name
         </div>
         <div class="grid-item grid-header">
-          Level
+          Lvl
         </div>
         <div class="grid-item grid-header">
           Points

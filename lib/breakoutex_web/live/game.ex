@@ -51,6 +51,7 @@ defmodule BreakoutexWeb.Live.Game do
       |> handle_joins(Presence.list(@presence))
       |> assign(:blocks, Blocks.build_board(state.level, state.unit, state.unit))
       |> assign(:bricks, Blocks.build_bricks(state.level, state.unit, state.unit))
+      |> update_leaderboard()
 
     if connected?(socket) do
       {:ok, schedule_tick(socket)}

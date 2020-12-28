@@ -10,27 +10,33 @@ defmodule BreakoutexWeb.Components.Leaderboard do
       <h6>Leaderboard:</h6>
       <div class="grid-container-leaderboard">
         <div class="grid-item grid-header">
+          #
+        </div>
+        <div class="grid-item grid-header">
           Name
         </div>
         <div class="grid-item grid-header">
           Time
         </div>
         <div class="grid-item grid-header">
-          Points
+          Points (Lvl)
         </div>
         <%= for {user_id, user} <- @leaderboard do %>
           <div class="grid-item">
+            1.
+          </div>
+          <div class="grid-item">
             <%= if user_id == @current_user_id do %>
-              <span class="me"><%= user_id %></span>
+              <span class="me"><%= user[:player_name] %></span>
             <% else %>
-              <%= user_id %>
+              <%= user[:player_name] %>
             <% end %>
           </div>
           <div class="grid-item">
-          <%= user[:time] %>
+            <%= user[:time].year %>-<%= user[:time].month %>-<%= user[:time].day %> <%= user[:time].hour %>:<%= user[:time].minute %>
           </div>
           <div class="grid-item">
-            <%= user[:score] %>
+            <%= user[:score] %> (<%= user[:level] + 1 %>)
           </div>
         <% end %>
       </div>

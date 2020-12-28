@@ -118,10 +118,11 @@
         <% end %>
     </div>
     <div class="column right">
+        &#8203;
         <%= if @game_state not in [:welcome, :name] do %>
-        <div class="leaderboard-container">
-            <%= live_component @socket, Leaderboard, current_user_id: @current_user_id, leaderboard: @leaderboard %>
-        </div>
+            <div class="leaderboard-container">
+                <%= live_component @socket, Leaderboard, current_user_id: @current_user_id, leaderboard: @leaderboard %>
+            </div>
         <% end %>
     </div>
 
