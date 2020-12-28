@@ -29,7 +29,7 @@ defmodule Breakoutex.PersistentLeaderboard do
 
   def save(%{player_name: player_name, score: score, level: level, current_user_id: current_user_id}) do
     saved_info =
-      {current_user_id, [score: score, time: NaiveDateTime.utc_now(), level: level, player_name: player_name]}
+      {current_user_id <> player_name, [score: score, time: NaiveDateTime.utc_now(), level: level, player_name: player_name]}
 
     # Logger.info(inspect(saved_info))
     :ets.insert(@default_db_name, saved_info)
@@ -39,6 +39,10 @@ defmodule Breakoutex.PersistentLeaderboard do
     :ets.tab2list(@default_db_name)
     |> Enum.sort_by(fn {_, [score: score, time: _, level: _, player_name: _]} -> -score end)
     |> Enum.slice(0..(@leaderboard_size - 1))
-    |> IO.inspect()
+    |> Enum.sort_by(fn {_, [score: score, time: _, level: _, player_name: _]} -> -score end)
+    |> Enum.with_index()
+    |> Enum.into([], fn {{user, [score: score, time: time, level: level, player_name: player_name]}, index} ->
+      {user, [score: score, time: time, level: level, player_name: player_name, position: index]}
+    end)
   end
 end
