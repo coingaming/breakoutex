@@ -39,7 +39,6 @@ defmodule Breakoutex.PersistentLeaderboard do
     :ets.tab2list(@default_db_name)
     |> Enum.sort_by(fn {_, [score: score, time: _, level: _, player_name: _]} -> -score end)
     |> Enum.slice(0..(@leaderboard_size - 1))
-    |> Enum.sort_by(fn {_, [score: score, time: _, level: _, player_name: _]} -> -score end)
     |> Enum.with_index()
     |> Enum.into([], fn {{user, [score: score, time: time, level: level, player_name: player_name]}, index} ->
       {user, [score: score, time: time, level: level, player_name: player_name, position: index]}
