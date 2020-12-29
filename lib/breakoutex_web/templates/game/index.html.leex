@@ -33,7 +33,10 @@
         <%= if @game_state == :name do %>
         <div class="name-container">
             <p>
-                Input name: <%= @player_name %><span class="blink">_</span>
+                Input name (4-20 chars):
+            </p>
+            <p>
+                <%= @player_name %><span class="blink">_</span>
             </p>
             <p>
                 Press < enter > to continue
