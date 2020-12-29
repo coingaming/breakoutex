@@ -339,7 +339,6 @@ defmodule BreakoutexWeb.Live.Game do
       0 ->
         socket
         |> update_player_level(level + 1)
-        |> assign(:secret_message, Enum.at(@levels, level + 1) |> Map.get(:message))
         |> next_level()
 
       _ ->
@@ -351,9 +350,11 @@ defmodule BreakoutexWeb.Live.Game do
   defp next_level(%{assigns: %{level: level, unit: unit}} = socket) when level < @levels_no do
     socket
     |> assign(:game_state, :wait)
+    |> update_player_level(level)
+    |> assign(:secret_message, Enum.at(@levels, level) |> Map.get(:message))
     |> assign(:paddle, initial_paddle_state())
     |> assign(:ball, initial_ball_state())
-    |> assign(:blocks, Blocks.build_board(level, unit, unit))
+    |> assign(:blocks, Blocks.build_board(level , unit, unit))
     |> assign(:bricks, Blocks.build_bricks(level, unit, unit))
   end
 
