@@ -400,6 +400,32 @@ defmodule BreakoutexWeb.Live.Game do
     end
   end
 
+  defp on_input(%{assigns: %{game_state: :finish}} = socket, key) do
+    cond do
+      key in @return ->
+        state = initial_state()
+        current_user_id = "user_" <> Integer.to_string(System.os_time(:millisecond))
+        Presence.untrack(self(), @presence, socket.assigns.current_user_id)
+        Presence.track(self(), @presence, current_user_id, %{
+          name: "No name yet",
+          joined_at: :os.system_time(:seconds),
+          level: 1,
+          points: 0
+        })
+        socket
+        |> assign(state)
+        |> assign(:current_user_id, current_user_id)
+        |> assign(:users, %{})
+        |> handle_joins(Presence.list(@presence))
+        |> assign(:blocks, Blocks.build_board(state.level, state.unit, state.unit))
+        |> assign(:bricks, Blocks.build_bricks(state.level, state.unit, state.unit))
+        |> update_leaderboard()
+
+      true ->
+        socket
+    end
+  end
+
   defp on_input(socket, @space_key), do: start_game(socket)
 
   defp on_input(%{assigns: %{game_state: :playing}} = socket, key)
