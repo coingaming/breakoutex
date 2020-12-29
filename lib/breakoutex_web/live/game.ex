@@ -3,6 +3,7 @@ defmodule BreakoutexWeb.Live.Game do
   Main module, contains the entry point for the live view socket and
   all the game logic
   """
+  require Logger
 
   use Phoenix.LiveView
   use BreakoutexWeb.Live.Config
@@ -14,6 +15,7 @@ defmodule BreakoutexWeb.Live.Game do
   alias Breakoutex.PubSub
 
   @presence "breakout:presence"
+  @leaderboard "leaderboard:update"
 
   @type intersection_point :: %{
           block: paddle() | brick(),
@@ -40,6 +42,7 @@ defmodule BreakoutexWeb.Live.Game do
         })
 
       Phoenix.PubSub.subscribe(PubSub, @presence)
+      Phoenix.PubSub.subscribe(PubSub, @leaderboard)
     end
 
     state = initial_state()
@@ -52,7 +55,6 @@ defmodule BreakoutexWeb.Live.Game do
       |> handle_joins(Presence.list(@presence))
       |> assign(:blocks, Blocks.build_board(state.level, state.unit, state.unit))
       |> assign(:bricks, Blocks.build_bricks(state.level, state.unit, state.unit))
-      |> update_leaderboard()
 
     if connected?(socket) do
       {:ok, schedule_tick(socket)}
@@ -80,6 +82,12 @@ defmodule BreakoutexWeb.Live.Game do
     }
   end
 
+  def handle_info({"leaderboard", leaderboard}, socket) do
+    {:noreply,
+     socket
+     |> assign(:leaderboard, leaderboard)}
+  end
+
   @spec handle_event(String.t(), map(), Socket.t()) :: {:noreply, Socket.t()}
   def handle_event("keydown", %{"key" => key}, socket) do
     {:noreply, on_input(socket, key)}
@@ -97,16 +105,9 @@ defmodule BreakoutexWeb.Live.Game do
     |> check_collision()
     |> check_lost()
     |> check_victory()
-    |> update_leaderboard()
   end
 
   defp game_loop(socket), do: socket
-
-  @spec update_leaderboard(Socket.t()) :: Socket.t()
-  defp update_leaderboard(socket) do
-    socket
-    |> assign(:leaderboard, PersistentLeaderboard.get_leaderboard())
-  end
 
   @spec schedule_tick(Socket.t()) :: Socket.t()
   defp schedule_tick(socket) do
@@ -499,6 +500,8 @@ defmodule BreakoutexWeb.Live.Game do
       level: level,
       current_user_id: current_user_id
     })
+
+    Phoenix.PubSub.broadcast(PubSub, @leaderboard, {"leaderboard", PersistentLeaderboard.get_leaderboard()})
 
     socket
     |> assign(:score, new_points)
