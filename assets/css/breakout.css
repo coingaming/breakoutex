@@ -1,4 +1,4 @@
-.welcome-container {
+.welcome-container, .name-container {
   margin: 6rem 12rem 12rem 12rem;
 }
 
@@ -49,7 +49,7 @@
   font-size:  x-small;
 }
 
-.online-container, .leaderboard-container {
+.online-container, .leaderboard-container, .name-container {
   padding: 1.5rem;
 }
 
@@ -61,7 +61,7 @@
   margin-top: 45rem;
 }
 
-.info-container, .score-container .separator {
+.info-container .separator, .score-container .separator {
   margin: 0 0.5rem;
 }
 

@@ -207,6 +207,7 @@ defmodule BreakoutexWeb.Live.Config do
           score: 0,
           user_id: "user#" <> Integer.to_string(System.os_time(:second)),
           leaderboard: [],
+          position: 0,
           player_name: "",
           multiplier: @starting_multiplier,
           secret_message: Enum.at(@levels, 0) |> Map.get(:message),

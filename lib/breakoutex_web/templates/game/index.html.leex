@@ -1,11 +1,9 @@
 <div phx-window-keydown="keydown" phx-window-keyup="keyup">
     <div class="column left">
         &#8203;
-        <%= if @game_state not in [:welcome, :name] do %>
-            <div class="online-container">
-                <%= live_component @socket, ActiveUsers, current_user_id: @current_user_id, users: @users %>
-            </div>
-        <% end %>
+        <div class="online-container">
+            <%= live_component @socket, ActiveUsers, current_user_id: @current_user_id, users: @users %>
+        </div>
     </div>
     <div class="column middle">
         <%= if @game_state == :welcome do %>
@@ -45,7 +43,7 @@
 
         <%= if @game_state == :finish do %>
             <div class="victory-container">
-                <h3>Congratulations, you completed the game with <%= @score %> points!</h3>
+                <h3>Congratulations, you completed the game with <%= @score %> points on position <%= @position %>!</h3>
 
                 <%= case @lost_lives do %>
                 <% 0 -> %>
@@ -119,11 +117,9 @@
     </div>
     <div class="column right">
         &#8203;
-        <%= if @game_state not in [:welcome, :name] do %>
-            <div class="leaderboard-container">
-                <%= live_component @socket, Leaderboard, current_user_id: @current_user_id, leaderboard: @leaderboard %>
-            </div>
-        <% end %>
+        <div class="leaderboard-container">
+            <%= live_component @socket, Leaderboard, current_user_id: @current_user_id, leaderboard: @leaderboard %>
+        </div>
     </div>
 
 </div>

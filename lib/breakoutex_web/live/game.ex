@@ -362,6 +362,8 @@ defmodule BreakoutexWeb.Live.Game do
     socket
     |> assign(:game_state, :finish)
     |> update_player_level(@levels_no - 1)
+    |> update_leaderboard()
+    |> update_player_position
     |> assign(:ball, %{ball | dx: 0, dy: 0})
   end
 
@@ -434,6 +436,19 @@ defmodule BreakoutexWeb.Live.Game do
 
     socket
     |> assign(:level, new_level)
+  end
+
+  defp update_player_position(%{assigns: %{leaderboard: leaderboard, current_user_id: current_user_id, player_name: player_name}} = socket) do
+    position = leaderboard
+    |> Enum.filter(fn leaderboard_item ->
+      elem(leaderboard_item, 0) == current_user_id <> "_" <> player_name
+    end)
+    |> hd()
+    |> elem(1)
+    |> Keyword.fetch!(:position)
+
+    socket
+    |> assign(:position, position + 1)
   end
 
   defp update_player_points(
