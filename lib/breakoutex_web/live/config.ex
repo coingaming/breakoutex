@@ -144,6 +144,62 @@ defmodule BreakoutexWeb.Live.Config do
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
                       ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
                     ]
+                  },
+                  %{
+                    brick_length: 3,
+                    message: "year in review message 4",
+                    grid: [
+                      ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
+                      ~w(X 0 0 0 0 0 0 r 0 0 0 b 0 0 0 r 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 b 0 0 0 r 0 0 0 b 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X g 0 0 b 0 0 b 0 0 r 0 0 g 0 0 b 0 0 b 0 0 r 0 0 X),
+                      ~w(X r 0 0 g 0 0 r 0 0 g 0 0 r 0 0 g 0 0 r 0 0 g 0 0 X),
+                      ~w(X b 0 0 r 0 0 g 0 0 b 0 0 b 0 0 r 0 0 g 0 0 b 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 y 0 0 p 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X p 0 0 y 0 0 p 0 0 0 0 0 0 0 0 y 0 0 p 0 0 y 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 p 0 0 y 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X p 0 0 y 0 0 p 0 0 0 0 0 0 0 0 y 0 0 p 0 0 y 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
+                    ]
+                  },
+                  %{
+                    brick_length: 1,
+                    message: "year in review message 5",
+                    grid: [
+                      ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
+                      ~w(X 0 0 0 0 0 0 0 w 0 0 w 0 0 w 0 0 w 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 y r y r y r y r y r y r y r y r y r y r y 0 X),
+                      ~w(X 0 0 r y r y r y r y r y r y r y r y r y r y r 0 X),
+                      ~w(X 0 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 p 0 0 b b 0 0 0 0 0 0 0 0 0 0 b b b 0 0 p 0 X),
+                      ~w(X 0 0 0 0 b 0 0 0 0 r 0 0 0 0 r 0 0 b 0 0 0 0 0 0 X),
+                      ~w(X 0 0 p 0 b 0 0 0 r 0 r 0 0 r 0 r 0 b 0 b b 0 p 0 X),
+                      ~w(X 0 0 0 0 b 0 0 0 0 r 0 0 0 0 r 0 0 b 0 0 b 0 0 0 X),
+                      ~w(X 0 0 p 0 0 b b 0 0 0 0 0 0 0 0 0 0 b b b b 0 p 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 p 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
+                    ]
                   }
                 ]
 

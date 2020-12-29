@@ -7,7 +7,7 @@ defmodule BreakoutexWeb.Components.Leaderboard do
 
   def render(assigns) do
     ~L"""
-      <h6>Top 50:</h6>
+      <h6>Top 25:</h6>
       <div class="grid-container-leaderboard">
         <div class="grid-item grid-header">
           #

@@ -92,12 +92,12 @@ defmodule BreakoutexWeb.Live.Blocks do
   end
 
   @spec get_color(String.t()) :: String.t()
-  defp get_color("r"), do: "red"
-  defp get_color("b"), do: "blue"
-  defp get_color("g"), do: "green"
-  defp get_color("y"), do: "yellow"
-  defp get_color("o"), do: "orange"
-  defp get_color("p"), do: "purple"
-  defp get_color("t"), do: "turquoise"
+  defp get_color("r"), do: "#583a3d"
+  defp get_color("b"), do: "#218C8D"
+  defp get_color("g"), do: "#8EDC9D"
+  defp get_color("y"), do: "#F9E559"
+  defp get_color("o"), do: "#EF7126"
+  defp get_color("p"), do: "#462066"
+  defp get_color("t"), do: "#6CCECB"
   defp get_color("w"), do: "white"
 end

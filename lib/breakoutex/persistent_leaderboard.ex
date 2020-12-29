@@ -3,7 +3,7 @@ defmodule Breakoutex.PersistentLeaderboard do
   require Logger
 
   @default_db_name :leaderboard
-  @leaderboard_size 50
+  @leaderboard_size 25
 
   def start_link(table_name) do
     GenServer.start_link(__MODULE__, table_name, name: @default_db_name)
