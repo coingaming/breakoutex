@@ -363,7 +363,6 @@ defmodule BreakoutexWeb.Live.Game do
     socket
     |> assign(:game_state, :finish)
     |> update_player_level(@levels_no - 1)
-    |> update_leaderboard()
     |> update_player_position
     |> assign(:ball, %{ball | dx: 0, dy: 0})
   end
@@ -420,7 +419,6 @@ defmodule BreakoutexWeb.Live.Game do
         |> handle_joins(Presence.list(@presence))
         |> assign(:blocks, Blocks.build_board(state.level, state.unit, state.unit))
         |> assign(:bricks, Blocks.build_bricks(state.level, state.unit, state.unit))
-        |> update_leaderboard()
 
       true ->
         socket
