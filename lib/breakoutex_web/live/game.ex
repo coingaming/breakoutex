@@ -392,7 +392,8 @@ defmodule BreakoutexWeb.Live.Game do
         |> assign(:player_name, name)
 
       key in @return ->
-        name_length = socket.assigns.player_name |> String.trim |> String.length
+        name_length = socket.assigns.player_name |> String.trim() |> String.length()
+
         if name_length > 3 and name_length < 21 do
           update_player_name(socket)
           |> start_game
@@ -400,7 +401,7 @@ defmodule BreakoutexWeb.Live.Game do
           socket
         end
 
-      String.match?(key, ~r/^[[:alpha:][:blank:]]+$/) ->
+      String.match?(key, ~r/^[[:alnum:][:blank:]]+$/) ->
         socket
         |> assign(:player_name, socket.assigns.player_name <> key)
 
