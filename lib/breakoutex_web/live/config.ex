@@ -39,6 +39,7 @@ defmodule BreakoutexWeb.Live.Config do
       @ball_speed 4
 
       @space_key " "
+      @shift ["Shift"]
       @left_keys ["ArrowLeft", "a"]
       @right_keys ["ArrowRight", "d"]
       @backspace ["Backspace"]

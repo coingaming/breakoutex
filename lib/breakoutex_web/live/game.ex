@@ -372,9 +372,8 @@ defmodule BreakoutexWeb.Live.Game do
   @spec on_input(Socket.t(), String.t()) :: Socket.t()
   defp on_input(%{assigns: %{game_state: :name}} = socket, key) do
     cond do
-      String.match?(key, ~r/\A\p{L}\p{M}*\z/u) ->
+      key in @shift ->
         socket
-        |> assign(:player_name, socket.assigns.player_name <> key)
 
       key in @backspace ->
         name =
@@ -395,6 +394,10 @@ defmodule BreakoutexWeb.Live.Game do
       key in @return ->
         update_player_name(socket)
         |> start_game
+
+      String.match?(key, ~r/^[[:alpha:][:blank:]]+$/) ->
+        socket
+        |> assign(:player_name, socket.assigns.player_name <> key)
 
       true ->
         socket
