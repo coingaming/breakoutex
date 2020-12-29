@@ -406,12 +406,14 @@ defmodule BreakoutexWeb.Live.Game do
         state = initial_state()
         current_user_id = "user_" <> Integer.to_string(System.os_time(:millisecond))
         Presence.untrack(self(), @presence, socket.assigns.current_user_id)
+
         Presence.track(self(), @presence, current_user_id, %{
           name: "No name yet",
           joined_at: :os.system_time(:seconds),
           level: 1,
           points: 0
         })
+
         socket
         |> assign(state)
         |> assign(:current_user_id, current_user_id)

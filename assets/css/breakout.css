@@ -176,3 +176,12 @@ div.left:empty:before {
   font-weight: bold;
 }
 
+.grid-item {
+  padding: 5px;
+}
+
+.break-all {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+

@@ -28,7 +28,7 @@ defmodule BreakoutexWeb.Components.Leaderboard do
           <div class="grid-item">
             <%= user[:position] + 1 %>.
           </div>
-          <div class="grid-item">
+          <div class="grid-item break-all">
             <%= if user_id == @current_user_id <> "_" <> @player_name do %>
               <span class="me"><%= user[:player_name] %></span>
             <% else %>
