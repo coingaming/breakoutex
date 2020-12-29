@@ -70,7 +70,7 @@
 }
 
 .score-container .points {
-  color: white;
+  color: gray;
 }
 
 .help-container {
@@ -89,7 +89,7 @@
   font-size: 13px;
   max-width: 440px;
   padding-left: 75px;
-  color: gray;
+  color: white;
 }
 
 .game-container .block {
