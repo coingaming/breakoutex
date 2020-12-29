@@ -42,5 +42,6 @@ npm-debug.log
 /config/*.secret.exs
 .elixir_ls
 .vscode
-
+.idea
+leaderboard2.db
 env/docker.env.prod
