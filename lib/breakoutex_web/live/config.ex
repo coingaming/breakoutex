@@ -90,6 +90,34 @@ defmodule BreakoutexWeb.Live.Config do
                     ]
                   },
                   %{
+                    brick_length: 6,
+                    message: "year in review message 6",
+                    grid: [
+                      ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 b 0 0 0 0 0 r 0 0 0 0 0 b 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 r 0 0 0 0 0 b 0 0 0 0 0 r 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 b 0 0 0 0 0 r 0 0 0 0 0 b 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 b 0 0 0 0 0 g 0 0 0 0 0 b 0 0 0 0 0 0 0 0 X),
+                      ~w(X g 0 0 0 0 0 r 0 0 0 0 0 r 0 0 0 0 0 b 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 g 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 g 0 0 0 0 0 r 0 0 0 0 0 g 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
+                    ]
+                  },
+                  %{
                     brick_length: 3,
                     message: "year in review message 2",
                     grid: [
@@ -145,6 +173,63 @@ defmodule BreakoutexWeb.Live.Config do
                       ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
                     ]
                   },
+                  %{
+                    brick_length: 2,
+                    message: "year in review message 7",
+                    grid: [
+                      ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
+                      ~w(X o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 X),
+                      ~w(X 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X o 0 0 t 0 t 0 0 0 b 0 b 0 b 0 0 g 0 0 0 g 0 0 0 X),
+                      ~w(X 0 0 0 t 0 0 t 0 0 b 0 0 0 0 0 0 g 0 0 0 g 0 0 0 X),
+                      ~w(X o 0 0 t 0 0 t 0 0 b 0 b 0 0 0 0 0 g 0 g 0 0 0 0 X),
+                      ~w(X 0 0 0 t 0 t 0 0 0 b 0 0 0 0 0 0 0 0 g 0 0 0 0 0 X),
+                      ~w(X o 0 0 0 0 0 0 0 0 b 0 b 0 b 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 0 0 X),
+                      ~w(X 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
+                    ]
+                  },
+                  %{
+                    brick_length: 1,
+                    message: "year in review message 8",
+                    grid: [
+                      ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 o p 0 0 p o p 0 o 0 o 0 0 0 0 0 0 y 0 0 0 0 X),
+                      ~w(X 0 0 p 0 o 0 o 0 0 0 p 0 p 0 0 0 0 0 y y y 0 0 0 X),
+                      ~w(X 0 0 o 0 p 0 p o 0 0 o 0 o 0 0 0 0 0 0 y g 0 g 0 X),
+                      ~w(X 0 0 p o 0 0 o p o 0 0 p 0 0 0 0 0 0 0 0 0 g 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 g 0 g 0 X),
+                      ~w(X 0 0 0 y 0 0 0 0 b b 0 0 b t 0 0 0 b b 0 0 0 g 0 X),
+                      ~w(X 0 0 y y y 0 0 t 0 0 t 0 b 0 t 0 t 0 0 0 0 0 g 0 X),
+                      ~w(X g 0 g y 0 0 0 t 0 0 t 0 b t 0 0 0 t t 0 0 0 g 0 X),
+                      ~w(X 0 g 0 0 0 0 0 0 b b 0 0 b 0 0 0 b b 0 0 0 0 0 0 X),
+                      ~w(X g 0 g 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X g 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X g 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
+                    ]
+                  },
+
                   %{
                     brick_length: 3,
                     message: "year in review message 4",
