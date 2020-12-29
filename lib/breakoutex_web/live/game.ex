@@ -354,7 +354,7 @@ defmodule BreakoutexWeb.Live.Game do
     |> assign(:secret_message, Enum.at(@levels, level) |> Map.get(:message))
     |> assign(:paddle, initial_paddle_state())
     |> assign(:ball, initial_ball_state())
-    |> assign(:blocks, Blocks.build_board(level , unit, unit))
+    |> assign(:blocks, Blocks.build_board(level, unit, unit))
     |> assign(:bricks, Blocks.build_bricks(level, unit, unit))
   end
 
@@ -438,14 +438,17 @@ defmodule BreakoutexWeb.Live.Game do
     |> assign(:level, new_level)
   end
 
-  defp update_player_position(%{assigns: %{leaderboard: leaderboard, current_user_id: current_user_id, player_name: player_name}} = socket) do
-    position = leaderboard
-    |> Enum.filter(fn leaderboard_item ->
-      elem(leaderboard_item, 0) == current_user_id <> "_" <> player_name
-    end)
-    |> hd()
-    |> elem(1)
-    |> Keyword.fetch!(:position)
+  defp update_player_position(
+         %{assigns: %{leaderboard: leaderboard, current_user_id: current_user_id, player_name: player_name}} = socket
+       ) do
+    position =
+      leaderboard
+      |> Enum.filter(fn leaderboard_item ->
+        elem(leaderboard_item, 0) == current_user_id <> "_" <> player_name
+      end)
+      |> hd()
+      |> elem(1)
+      |> Keyword.fetch!(:position)
 
     socket
     |> assign(:position, position + 1)

@@ -29,7 +29,7 @@ defmodule BreakoutexWeb.Components.Leaderboard do
             <%= user[:position] + 1 %>.
           </div>
           <div class="grid-item">
-            <%= if user_id == @current_user_id do %>
+            <%= if user_id == @current_user_id <> "_" <> @player_name do %>
               <span class="me"><%= user[:player_name] %></span>
             <% else %>
               <%= user[:player_name] %>

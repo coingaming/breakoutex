@@ -118,7 +118,7 @@
     <div class="column right">
         &#8203;
         <div class="leaderboard-container">
-            <%= live_component @socket, Leaderboard, current_user_id: @current_user_id, leaderboard: @leaderboard %>
+            <%= live_component @socket, Leaderboard, current_user_id: @current_user_id, leaderboard: @leaderboard, player_name: @player_name %>
         </div>
     </div>
 
