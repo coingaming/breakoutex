@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="persistent_ets" type="mix">
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/persistent_ets/ebin" />
+      <root url="file://$PROJECT_DIR$/_build/dev/lib/persistent_ets/ebin" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/deps/persistent_ets/lib" />
+      <root url="file://$PROJECT_DIR$/deps/persistent_ets/lib" />
+    </SOURCES>
+  </library>
+</component>
