@@ -8,6 +8,7 @@ defmodule Breakoutex.Application do
       BreakoutexWeb.Endpoint,
       {Breakoutex.PersistentLeaderboard, :leaderboard},
       {Phoenix.PubSub, [adapter: Phoenix.PubSub.PG2, pool_size: 1, name: Breakoutex.PubSub]},
+      {Breakoutex.Repo, []},
       BreakoutexWeb.Presence
     ]
 
