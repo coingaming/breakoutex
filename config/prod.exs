@@ -27,6 +27,13 @@ config :breakoutex, BreakoutexWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :debug
 
+config :breakoutex, GigalixirGettingStarted.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  url: {:system, "DATABASE_URL"},
+  database: "",
+  ssl: true,
+  pool_size: 2
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

@@ -5,6 +5,15 @@
 # is restricted to this project.
 use Mix.Config
 
+config :breakoutex,
+  ecto_repos: [Breakoutex.Repo]
+
+config :breakoutex, Breakoutex.Repo,
+  database: "game",
+  username: "postgres",
+  password: "postgres",
+  hostname: "localhost"
+
 # Configures the endpoint
 config :breakoutex, BreakoutexWeb.Endpoint,
   url: [host: "localhost"],
