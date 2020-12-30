@@ -91,7 +91,7 @@ defmodule BreakoutexWeb.Live.Config do
                   #                  },
                   %{
                     brick_length: 3,
-                    message: "year in review message 1",
+                    message: "Looking back: we are independent enough to have our own house (excluding some siblings on the ground floor)",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
@@ -119,7 +119,7 @@ defmodule BreakoutexWeb.Live.Config do
                   },
                   %{
                     brick_length: 6,
-                    message: "year in review message 6",
+                    message: "We got kicked out of the house multiple times and had to WFH. No company, no drinks, no water cooler discussions",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
@@ -147,7 +147,7 @@ defmodule BreakoutexWeb.Live.Config do
                   },
                   %{
                     brick_length: 3,
-                    message: "year in review message 2",
+                    message: "WFH is awesome for writing code - no clothes needed, no distractions",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
@@ -175,7 +175,7 @@ defmodule BreakoutexWeb.Live.Config do
                   },
                   %{
                     brick_length: 2,
-                    message: "year in review message 3",
+                    message: "Broke up the existing teams (sad) to build something even better (so much potential)",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
@@ -203,20 +203,20 @@ defmodule BreakoutexWeb.Live.Config do
                   },
                   %{
                     brick_length: 2,
-                    message: "year in review message 7",
+                    message: "Hot topics around cold subjects: Friday deploy freeze, holiday deploy freeze, will there be enough snow to call it a winter?",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
-                      ~w(X o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 X),
-                      ~w(X 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 0 X),
+                      ~w(X t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 X),
+                      ~w(X 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                      ~w(X o 0 0 t 0 t 0 0 0 b 0 b 0 b 0 0 g 0 0 0 g 0 0 0 X),
-                      ~w(X 0 0 0 t 0 0 t 0 0 b 0 0 0 0 0 0 g 0 0 0 g 0 0 0 X),
-                      ~w(X o 0 0 t 0 0 t 0 0 b 0 b 0 0 0 0 0 g 0 g 0 0 0 0 X),
-                      ~w(X 0 0 0 t 0 t 0 0 0 b 0 0 0 0 0 0 0 0 g 0 0 0 0 0 X),
-                      ~w(X o 0 0 0 0 0 0 0 0 b 0 b 0 b 0 0 0 0 0 0 0 0 0 0 X),
+                      ~w(X 0 0 0 w 0 w 0 0 0 b 0 b 0 b 0 0 g 0 0 0 g 0 0 0 X),
+                      ~w(X 0 0 0 w 0 0 w 0 0 b 0 0 0 0 0 0 g 0 0 0 g 0 0 0 X),
+                      ~w(X 0 0 0 w 0 0 w 0 0 b 0 b 0 0 0 0 0 g 0 g 0 0 0 0 X),
+                      ~w(X 0 0 0 w 0 w 0 0 0 b 0 0 0 0 0 0 0 0 g 0 0 0 0 0 X),
+                      ~w(X o 0 0 0 0 0 0 0 0 b 0 b 0 b 0 0 0 0 0 0 0 0 o 0 X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                      ~w(X r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 0 0 X),
-                      ~w(X 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 o 0 r 0 0 X),
+                      ~w(X 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 X),
+                      ~w(X 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
@@ -231,7 +231,7 @@ defmodule BreakoutexWeb.Live.Config do
                   },
                   %{
                     brick_length: 1,
-                    message: "year in review message 8",
+                    message: "Advanced BI: at least 90% of the time all of our services work every time",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
@@ -259,7 +259,7 @@ defmodule BreakoutexWeb.Live.Config do
                   },
                   %{
                     brick_length: 3,
-                    message: "year in review message 4",
+                    message: "Looking forward: a new year’s resolution - no new bugs put into production",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X 0 0 0 0 0 0 r 0 0 0 b 0 0 0 r 0 0 0 0 0 0 0 0 0 X),
@@ -287,7 +287,7 @@ defmodule BreakoutexWeb.Live.Config do
                   },
                   %{
                     brick_length: 1,
-                    message: "year in review message 5",
+                    message: "Fun fact - around 8% of new year’s resolutions are kept",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X 0 0 0 0 0 0 0 w 0 0 w 0 0 w 0 0 w 0 0 0 0 0 0 0 X),
