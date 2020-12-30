@@ -36,13 +36,36 @@ defmodule Breakoutex.PersistentLeaderboard do
     :ets.insert(@default_db_name, saved_info)
   end
 
-  def get_leaderboard() do
+  def get_leaderboard(slice \\ true) do
     :ets.tab2list(@default_db_name)
     |> Enum.sort_by(fn {_, [score: score, time: _, level: _, player_name: _]} -> -score end)
-    |> Enum.slice(0..(@leaderboard_size - 1))
+    |> conditional_slice(@leaderboard_size - 1, slice)
     |> Enum.with_index()
     |> Enum.into([], fn {{user, [score: score, time: time, level: level, player_name: player_name]}, index} ->
       {user, [score: score, time: time, level: level, player_name: player_name, position: index]}
     end)
+  end
+
+  def get_position(%{current_user_id: current_user_id, player_name: player_name}) do
+    leaderboard = get_leaderboard(false)
+
+    position =
+      leaderboard
+      |> Enum.filter(fn leaderboard_item ->
+        elem(leaderboard_item, 0) == current_user_id <> "_" <> player_name
+      end)
+      |> hd()
+      |> elem(1)
+      |> Keyword.fetch!(:position)
+
+    position + 1
+  end
+
+  defp conditional_slice(list, size, condition) do
+    if condition do
+      Enum.slice(list, 0..size)
+    else
+      list
+    end
   end
 end

@@ -61,6 +61,34 @@ defmodule BreakoutexWeb.Live.Config do
       # Brick length is expressed in basic units
       @levels System.get_env("LEVELS") ||
                 [
+                  #                  %{
+                  #                    brick_length: 3,
+                  #                    message: "year in review message 1",
+                  #                    grid: [
+                  #                      ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 r 0 0 0 r 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                      ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
+                  #                    ]
+                  #                  },
                   %{
                     brick_length: 3,
                     message: "year in review message 1",
@@ -229,7 +257,6 @@ defmodule BreakoutexWeb.Live.Config do
                       ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
                     ]
                   },
-
                   %{
                     brick_length: 3,
                     message: "year in review message 4",

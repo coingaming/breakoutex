@@ -360,11 +360,14 @@ defmodule BreakoutexWeb.Live.Game do
     |> assign(:bricks, Blocks.build_bricks(level, unit, unit))
   end
 
-  defp next_level(%{assigns: %{ball: ball}} = socket) do
+  defp next_level(%{assigns: %{ball: ball, current_user_id: current_user_id, player_name: player_name}} = socket) do
     socket
     |> assign(:game_state, :finish)
     |> update_player_level(@levels_no - 1)
-    |> update_player_position
+    |> assign(
+      :position,
+      PersistentLeaderboard.get_position(%{current_user_id: current_user_id, player_name: player_name})
+    )
     |> assign(:ball, %{ball | dx: 0, dy: 0})
   end
 
@@ -431,6 +434,7 @@ defmodule BreakoutexWeb.Live.Game do
         |> handle_joins(Presence.list(@presence))
         |> assign(:blocks, Blocks.build_board(state.level, state.unit, state.unit))
         |> assign(:bricks, Blocks.build_bricks(state.level, state.unit, state.unit))
+        |> assign(:leaderboard, PersistentLeaderboard.get_leaderboard())
 
       true ->
         socket
@@ -473,22 +477,6 @@ defmodule BreakoutexWeb.Live.Game do
 
     socket
     |> assign(:level, new_level)
-  end
-
-  defp update_player_position(
-         %{assigns: %{leaderboard: leaderboard, current_user_id: current_user_id, player_name: player_name}} = socket
-       ) do
-    position =
-      leaderboard
-      |> Enum.filter(fn leaderboard_item ->
-        elem(leaderboard_item, 0) == current_user_id <> "_" <> player_name
-      end)
-      |> hd()
-      |> elem(1)
-      |> Keyword.fetch!(:position)
-
-    socket
-    |> assign(:position, position + 1)
   end
 
   defp update_player_points(
