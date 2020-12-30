@@ -1,6 +1,7 @@
 defmodule Breakoutex.PersistentLeaderboard do
   use GenServer
   require Logger
+  import Ecto.Query
 
   @default_db_name :leaderboard
   @leaderboard_size 25
@@ -38,6 +39,10 @@ defmodule Breakoutex.PersistentLeaderboard do
 
   def get_leaderboard(slice \\ true) do
     :ets.tab2list(@default_db_name)
+    |> case do
+      [] -> try_database()
+      any_result -> any_result
+    end
     |> Enum.sort_by(fn {_, [score: score, time: _, level: _, player_name: _]} -> -score end)
     |> conditional_slice(@leaderboard_size - 1, slice)
     |> Enum.with_index()
@@ -66,6 +71,18 @@ defmodule Breakoutex.PersistentLeaderboard do
       Enum.slice(list, 0..size)
     else
       list
+    end
+  end
+
+  defp try_database do
+    query = from "leaderboard", select: [:leaderboard]
+    Breakoutex.Repo.all(query)
+    |> case do
+      [] -> []
+      [%{leaderboard: leaderboard_string}] ->
+        Code.eval_string(leaderboard_string)
+        |> Tuple.to_list()
+        |> hd()
     end
   end
 end
