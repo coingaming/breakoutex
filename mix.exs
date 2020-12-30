@@ -49,6 +49,8 @@ defmodule Breakoutex.Mixfile do
       {:phoenix, "~> 1.5.4"},
       {:plug_cowboy, "~> 2.0"},
       {:persistent_ets, "~> 0.1.0"},
+      {:ecto_sql, "~> 3.0"},
+      {:postgrex, ">= 0.0.0"},
       {:credo, "~> 1.4", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.0.0", only: [:dev], runtime: false}
     ]
