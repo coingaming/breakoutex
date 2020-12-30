@@ -9,7 +9,8 @@ defmodule Breakoutex.Application do
       {Breakoutex.PersistentLeaderboard, :leaderboard},
       {Phoenix.PubSub, [adapter: Phoenix.PubSub.PG2, pool_size: 1, name: Breakoutex.PubSub]},
       Breakoutex.Repo,
-      BreakoutexWeb.Presence
+      BreakoutexWeb.Presence,
+      Breakoutex.LeaderboardSaver
     ]
 
     opts = [strategy: :one_for_one, name: Breakoutex.Supervisor]
