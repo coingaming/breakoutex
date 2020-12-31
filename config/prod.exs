@@ -27,7 +27,7 @@ config :breakoutex, BreakoutexWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :debug
 
-config :breakoutex, GigalixirGettingStarted.Repo,
+config :breakoutex, Breakoutex.Repo,
   adapter: Ecto.Adapters.Postgres,
   url: {:system, "DATABASE_URL"},
   database: "",
