@@ -341,7 +341,7 @@ defmodule BreakoutexWeb.Live.Game do
       0 ->
         socket
         |> update_player_level(level + 1)
-        |> next_level()
+        |> wait_before_next_level()
 
       _ ->
         socket
@@ -368,6 +368,12 @@ defmodule BreakoutexWeb.Live.Game do
       :position,
       PersistentLeaderboard.get_position(%{current_user_id: current_user_id, player_name: player_name})
     )
+    |> assign(:ball, %{ball | dx: 0, dy: 0})
+  end
+
+  defp wait_before_next_level(%{assigns: %{ball: ball}} = socket) do
+    socket
+    |> assign(:game_state, :pause)
     |> assign(:ball, %{ball | dx: 0, dy: 0})
   end
 
@@ -438,6 +444,13 @@ defmodule BreakoutexWeb.Live.Game do
 
       true ->
         socket
+    end
+  end
+
+  defp on_input(%{assigns: %{game_state: :pause}} = socket, key) do
+    cond do
+      key in @return ->
+        next_level(socket)
     end
   end
 
