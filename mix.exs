@@ -4,7 +4,7 @@ defmodule Breakoutex.Mixfile do
   def project do
     [
       app: :breakoutex,
-      version: "0.4.16",
+      version: "0.4.17",
       elixir: "~> 1.8",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),

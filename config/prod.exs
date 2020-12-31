@@ -34,6 +34,9 @@ config :breakoutex, Breakoutex.Repo,
   ssl: true,
   pool_size: 2
 
+config :breakoutex,
+  ecto_repos: [Breakoutex.Repo]
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key
