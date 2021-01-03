@@ -29,7 +29,7 @@ config :logger, level: :debug
 
 config :breakoutex, Breakoutex.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: "${DATABASE_URL}",
+  url: System.get_env("DATABASE_URL"),
   database: "",
   ssl: true,
   pool_size: 2
