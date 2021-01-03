@@ -12,3 +12,33 @@ services:
     volumes:
       - .:/home/app
     working_dir: /home/app
+    depends_on:
+      - breakoutex-postgres
+    environment:
+      MIX_ENV: dev
+      SERVICE_PORT: 4000
+      POSTGRES_URL: "ecto://postgres:postgres@breakoutex-postgres:5432/game"
+
+
+  breakoutex-postgres:
+    image: postgres:13
+    command: postgres -c 'max_connections=2000'
+    ports:
+      - "5416:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: game
+    volumes:
+      - db-data:/var/lib/postgresql:rw
+    networks:
+      - breakoutex_network
+
+volumes:
+  db-data:
+    external: false
+
+networks:
+  breakoutex_network:
+    external:
+      name: breakoutex_network

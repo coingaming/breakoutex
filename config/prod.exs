@@ -1,4 +1,5 @@
 use Mix.Config
+require Logger
 
 # For production, we often load configuration from external
 # sources, such as your system environment. For this reason,
@@ -33,6 +34,8 @@ config :breakoutex, Breakoutex.Repo,
   database: "",
   ssl: true,
   pool_size: 2
+
+Logger.info("db url: #{DATABASE_URL}")
 
 config :breakoutex,
   ecto_repos: [Breakoutex.Repo]
