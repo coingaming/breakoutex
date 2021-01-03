@@ -23,6 +23,7 @@ defmodule Breakoutex.LeaderboardSaver do
       [] -> :ok
       any_result -> save_to_db(any_result)
     end
+
     schedule_work()
     {:noreply, state}
   end
@@ -32,8 +33,8 @@ defmodule Breakoutex.LeaderboardSaver do
   end
 
   defp save_to_db(res) do
-    query = from "leaderboard", select: [:leaderboard]
+    query = from("leaderboard", select: [:leaderboard])
     Breakoutex.Repo.delete_all(query)
-    Breakoutex.Repo.insert_all("leaderboard", [[leaderboard: Kernel.inspect((res))]])
+    Breakoutex.Repo.insert_all("leaderboard", [[leaderboard: Kernel.inspect(res)]])
   end
 end

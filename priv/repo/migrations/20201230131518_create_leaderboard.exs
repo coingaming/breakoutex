@@ -3,7 +3,7 @@ defmodule Breakoutex.Repo.Migrations.CreateLeaderboard do
 
   def change do
     create table(:leaderboard) do
-      add :leaderboard, :text
+      add(:leaderboard, :text)
     end
   end
 end

@@ -451,6 +451,9 @@ defmodule BreakoutexWeb.Live.Game do
     cond do
       key in @return ->
         next_level(socket)
+
+      true ->
+        socket
     end
   end
 

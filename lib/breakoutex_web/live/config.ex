@@ -61,37 +61,38 @@ defmodule BreakoutexWeb.Live.Config do
       # Brick length is expressed in basic units
       @levels System.get_env("LEVELS") ||
                 [
-                  #                  %{
-                  #                    brick_length: 3,
-                  #                    message: "year in review message 1",
-                  #                    grid: [
-                  #                      ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 r 0 0 0 r 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
-                  #                      ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
-                  #                    ]
-                  #                  },
+                  #                                    %{
+                  #                                      brick_length: 3,
+                  #                                      message: "year in review message 1",
+                  #                                      grid: [
+                  #                                        ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 r 0 0 0 r 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
+                  #                                        ~w(D D D D D D D D D D D D D D D D D D D D D D D D D D)
+                  #                                      ]
+                  #                                    }
                   %{
                     brick_length: 3,
-                    message: "Looking back: we are independent enough to have our own house (excluding some siblings on the ground floor)",
+                    message:
+                      "Looking back: we are independent enough to have our own house (excluding some siblings on the ground floor)",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
@@ -119,7 +120,8 @@ defmodule BreakoutexWeb.Live.Config do
                   },
                   %{
                     brick_length: 6,
-                    message: "We got kicked out of the house multiple times and had to WFH. No company, no drinks, no water cooler discussions",
+                    message:
+                      "We got kicked out of the house multiple times and had to WFH. No company, no drinks, no water cooler discussions",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 X),
@@ -203,7 +205,8 @@ defmodule BreakoutexWeb.Live.Config do
                   },
                   %{
                     brick_length: 2,
-                    message: "Hot topics around cold subjects: Friday deploy freeze, holiday deploy freeze, will there be enough snow to call it a winter?",
+                    message:
+                      "Hot topics around cold subjects: Friday deploy freeze, holiday deploy freeze, will there be enough snow to call it a winter?",
                     grid: [
                       ~w(X X X X X X X X X X X X X X X X X X X X X X X X X X),
                       ~w(X t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 t 0 0 0 X),

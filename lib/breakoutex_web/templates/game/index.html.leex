@@ -62,7 +62,7 @@
             </div>
         <% end %>
 
-        <%= if @game_state in [:wait, :playing] do %>
+        <%= if @game_state in [:wait, :playing, :pause] do %>
             <div class="info-container">
                 <div class="score">
                     <span class="level">Level: <%= @level + 1 %></span>
@@ -76,11 +76,16 @@
                     <%= @secret_message %>
                 </div>
                 <%= if @game_state == :wait do %>
-                <div class="help-container">
-                    Press <span class="controls">spacebar</span> to start playing.
-                    <br />
-                    Use the arrow keys to move the paddle.
-                </div>
+                    <div class="help-container">
+                        Press <span class="controls">spacebar</span> to start playing.
+                        <br />
+                        Use the arrow keys to move the paddle.
+                    </div>
+                <% end %>
+                <%= if @game_state == :pause do %>
+                    <div class="help-container">
+                        Press <span class="controls">enter</span> to continue to the next level.
+                    </div>
                 <% end %>
 
                 <div class="block ball"

@@ -24,7 +24,7 @@ defmodule Breakoutex.PersistentLeaderboard do
   def init(table_name) do
     opts = [:set, :public, :named_table]
     table = PersistentEts.new(table_name, Path.expand("./leaderboard2.db"), opts)
-
+    Logger.info("db url: #{DATABASE_URL}")
     {:ok, %{table: table}}
   end
 
@@ -75,10 +75,13 @@ defmodule Breakoutex.PersistentLeaderboard do
   end
 
   defp try_database do
-    query = from "leaderboard", select: [:leaderboard]
+    query = from("leaderboard", select: [:leaderboard])
+
     Breakoutex.Repo.all(query)
     |> case do
-      [] -> []
+      [] ->
+        []
+
       [%{leaderboard: leaderboard_string}] ->
         Code.eval_string(leaderboard_string)
         |> Tuple.to_list()
