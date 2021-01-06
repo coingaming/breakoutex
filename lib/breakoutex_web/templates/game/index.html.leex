@@ -1,5 +1,5 @@
 <div phx-window-keydown="keydown" phx-window-keyup="keyup">
-    <div class="column left">
+    <div class="column left"  style="max-height:600px; overflow:scroll">
         &#8203;
         <div class="online-container">
             <%= live_component @socket, ActiveUsers, current_user_id: @current_user_id, users: @users %>
@@ -126,7 +126,7 @@
             </div>
         <% end %>
     </div>
-    <div class="column right">
+    <div class="column right" style="max-height:600px; overflow:scroll">
         &#8203;
         <div class="leaderboard-container">
             <%= live_component @socket, Leaderboard, current_user_id: @current_user_id, leaderboard: @leaderboard, player_name: @player_name %>
